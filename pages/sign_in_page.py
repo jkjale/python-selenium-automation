@@ -5,6 +5,8 @@ from pages.base_page import Page
 class SignInPage(Page):
     email = 'dogbrick@24hinbox.com'
     password = '*****'
+    invalid_pw = '***'
+    PW_ERROR_MSG = (By.ID, "password--ErrorMessage")
     LOGGED_IN_TICKER = (By.CSS_SELECTOR, "#account-sign-in > div > span")
     PASSWORD_FIELD = (By.ID, "password")
     SIGN_IN_BTN = (By.ID, "login")
@@ -37,5 +39,21 @@ class SignInPage(Page):
         self.input_text(self.email, *self.USERNAME_FIELD)
         self.input_text(self.password, *self.PASSWORD_FIELD)
 
+    def input_username(self):
+        self.input_text(self.email, *self.USERNAME_FIELD)
+
+    def input_password(self):
+        self.input_text(self.password, *self.PASSWORD_FIELD)
+
+    def input_invalid_password(self):
+        self.input_text(self.invalid_pw, *self.PASSWORD_FIELD)
+
+    def click_signin_continue_btn(self):
+        self.click(*self.SIGN_IN_BTN)
+
     def click_target_terms_and_conditions_link(self):
         self.wait_until_clickable_click(self.TERMS_AND_CONDITIONS_LINK)
+
+    def verify_pw_error_msg(self, error_msg):
+        self.wait_until_visible(self.PW_ERROR_MSG)
+        self.verify_text(error_msg, *self.PW_ERROR_MSG)
