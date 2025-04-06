@@ -13,6 +13,14 @@ PRODUCTS_LIST = (By.CSS_SELECTOR, "[data-test='@web/site-top-of-funnel/ProductCa
 def click_addToCart_btn_on_product(context):
     context.app.search_results_page.click_addToCart_btn_on_product()
 
+@when('Hover favorites icon')
+def hover_fav_icon(context):
+    context.app.search_results_page.hover_fav_icon()
+
+@then('Favorites tooltip is shown')
+def verify_fav_tooltip(context):
+    context.app.search_results_page.verify_fav_tooltip()
+
 
 @then('Verify search results shown for {search_word}')
 def verify_search_results(context, search_word):
