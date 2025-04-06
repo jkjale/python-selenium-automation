@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -68,6 +69,12 @@ class Page:
     def switch_to_window_by_id(self, window_id):
         print('Switching to window:', window_id)
         self.driver.switch_to.window(window_id)
+
+    def hover_element(self, *locator):
+        element = self.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element)
+        actions.perform()
 
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text.strip().lower()
