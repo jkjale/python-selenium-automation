@@ -1,4 +1,5 @@
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -75,6 +76,11 @@ class Page:
         actions = ActionChains(self.driver)
         actions.move_to_element(element)
         actions.perform()
+
+    def select_from_dropdown(self, dropdown_option, *locator):
+        dd = self.find_element(*locator)
+        select = Select(dd)
+        select.select_by_value(dropdown_option)
 
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text.strip().lower()

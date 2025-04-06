@@ -16,12 +16,24 @@ Feature: Login functionality
 #    And Verify user is logged in and redirected to home page
 
 
-  Scenario: User can open and close Terms and Conditions from sign in page
+#  Scenario: User can open and close Terms and Conditions from sign in page
+#    Given Open Target.com
+#    When Click Sign In
+#    Then From side navigation menu, click Sign In
+#    When Store original window
+#    And Click on Target terms and conditions link
+#    And Switch to the newly opened window
+#    Then Verify Terms and Conditions page is opened
+#    And User can close new window and switch back to original
+
+
+  Scenario: User gets error message when signing in with incorrect password
     Given Open Target.com
     When Click Sign In
     Then From side navigation menu, click Sign In
-    When Store original window
-    And Click on Target terms and conditions link
-    And Switch to the newly opened window
-    Then Verify Terms and Conditions page is opened
-    And User can close new window and switch back to original
+    When Verify Sign In form opened
+    Then Enter username
+    And Click "Continue" button
+    And Enter invalid password
+    And Click "Sign in with password" button
+    And "Please enter a valid password" error is shown

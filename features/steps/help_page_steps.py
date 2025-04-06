@@ -3,7 +3,22 @@ from behave import given, when, then
 
 @given('Open help.target.com/help')
 def open_help_page(context):
-    context.app.base_page.open_url('https://help.target.com/help')
+    context.app.help_page.open_help_page()
+
+
+@given('Open Help page for Returns')
+def open_help_returns(context):
+    context.app.help_page.open_help_returns()
+
+
+@when('Select Help topic {dropdown_option}')
+def select_help_topic(context, dropdown_option):
+    context.app.help_page.select_help_topic(dropdown_option)
+
+
+@then('Verify help {header} page opened')
+def verify_help_topic_page(context, header):
+    context.app.help_page.verify_help_topic_page(header)
 
 
 @then('"Target Help" header is shown')
