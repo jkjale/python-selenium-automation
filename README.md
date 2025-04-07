@@ -138,13 +138,16 @@ def verify_text(context, text):
 
 ### **Run Tests with Behave:**
 ```bash
-behave
+behave - to run all feature files
+behave features/tests/cart_tests.feature - to run one feature file
+behave -t smoke - to run all scenarios tagged with @smoke
+
 ```
 
 ### **Generate Allure Report:**
 ```bash
-behave -f allure_behave.formatter:AllureFormatter -o reports/
-allure serve reports/
+1. behave -f allure_behave.formatter:AllureFormatter -o test_results/ -t smoke
+2. allure serve test_results/
 ```
 
 ---
