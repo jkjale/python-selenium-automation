@@ -9,7 +9,7 @@ Feature: Cart functionality
     And Click on "View cart & check out" button in side navigation menu
     Then Cart page is displayed with the added item and correct subtotal
 
-
+  @smoke
   Scenario: "Your cart is empty" message is shown for empty cart
     Given Open Target.com
     When Click on Cart icon

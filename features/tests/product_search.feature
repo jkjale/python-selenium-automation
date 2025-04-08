@@ -13,7 +13,7 @@ Feature: Product Search functionality
 #    Then Verify search results shown for tea
 #    And Each product's name and image are shown
 
-
+  @smoke
   Scenario: User can see favorites tooltip for search results
     Given Open Target.com
     When Search for tea

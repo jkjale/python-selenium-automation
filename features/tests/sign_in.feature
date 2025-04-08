@@ -26,7 +26,7 @@ Feature: Login functionality
 #    Then Verify Terms and Conditions page is opened
 #    And User can close new window and switch back to original
 
-
+  @smoke
   Scenario: User gets error message when signing in with incorrect password
     Given Open Target.com
     When Click Sign In

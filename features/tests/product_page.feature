@@ -1,5 +1,6 @@
 Feature: Product page functionality
 
+  @smoke
   Scenario Outline: User can select all color options of a product
     Given Open Target product <product_id> page
     Then Click and verify colors starting at color index <color_ind> and labels list index <labels_list_ind>
